@@ -1,0 +1,33 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	string str1,str2;
+	bool flag;
+	int first;
+	while(cin>>str1>>str2)
+	{
+		flag=true;
+		first=str2.find(str1[0]);
+		
+		for(int i=1;i<str1.size();i++)
+		{
+			first=str2.find(str1[i],first);
+			if(first<0||first>=str2.size())
+			{
+				flag=false;
+				break;
+			}
+		}
+		
+		if(flag)
+			cout<<"Yes"<<endl;
+		else
+			cout<<"No"<<endl;
+	}
+	
+
+
+}
