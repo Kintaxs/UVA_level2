@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	string str;
+	int len;
+	bool flag,flag1;
+	
+	while(cin>>str)
+	{
+		if(str[0]=='.')
+			break;
+		string temp;
+		for(int i=0;i<str.size();i++)
+		{
+			temp=temp+str[i];
+			
+			
+			len=0;
+			flag=false;
+			flag1=false;
+			while(len<str.size())
+			{
+				for(int j=0;j<temp.size();j++)
+				{
+					if(temp[j]!=str[len])
+					{
+						flag=true;
+						break;
+					}
+					len++;
+				}
+				
+				if(flag)
+				{
+					break;
+				}
+			}
+			
+			
+			if(!flag)
+			{
+				cout<<str.size()/temp.size()<<endl;
+				break;
+			}
+		
+		
+		}
+	}
+
+
+}
