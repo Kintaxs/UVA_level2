@@ -1,0 +1,78 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+	int a,b,count=0;
+	string ans,input,output;
+	
+	while(cin>>a&&a!=0)
+	{
+		count++;
+		getchar();
+		ans="";
+		input="";
+		for(int i=0;i<a;i++)
+		{
+			getline(cin,input);
+			if(i)
+			{
+				ans+='\n';
+				ans+=input;
+			}
+			else
+				ans=input;
+		}
+		
+		cin>>b;
+		getchar();
+		
+		input="";
+		output="";
+		
+		for(int i=0;i<b;i++)
+		{
+			getline(cin,input);
+			if(i)
+			{
+				output+='\n';
+				output+=input;
+			}
+			else
+				output=input;
+		}
+	
+	
+		if(output==ans)
+		{
+			cout<<"Run #"<<count<<": Accepted"<<endl;
+		}
+		else
+		{
+			string ans2,out2;
+			
+			ans2="";
+			out2="";
+			
+			for(int i=0;i<ans.size();i++)
+			{
+				if(ans[i]<='9'&&ans[i]>='0')
+					ans2+=ans[i];	
+			}
+			
+			for(int i=0;i<output.size();i++)
+			{
+				if(output[i]<='9'&&output[i]>='0')
+					out2+=output[i];	
+			}
+			
+			if(ans2==out2)
+				cout<<"Run #"<<count<<": Presentation Error"<<endl;
+			else
+				cout<<"Run #"<<count<<": Wrong Answer"<<endl;
+		}
+	}
+
+
+}
