@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+int num1[1000001];
+int num2[1000001];
+int ans[1000001];
+int carry[1000001];
+
+int main()
+{
+	int line,num;
+	
+	cin>>line;
+	
+	while(line--)
+	{
+		
+		memset(num1,0,sizeof(num1));
+		memset(num2,0,sizeof(num2));
+		memset(ans,0,sizeof(ans));
+		memset(carry,0,sizeof(carry));
+		
+		cin>>num;
+		
+		for(int i=num-1;i>=0;i--)
+		{
+			cin>>num1[i]>>num2[i];
+		}
+		
+		for(int i=0;i<num;i++)
+		{
+			if((num1[i]+num2[i]+carry[i])>=10)
+			{
+				ans[i]=(num1[i]+num2[i]+carry[i])%10;
+				carry[i+1]++;
+			}
+			else
+			{
+				ans[i]=(num1[i]+num2[i]+carry[i])%10;
+			}
+		}
+		
+		if(carry[num]!=0)
+		{
+			ans[num]++;
+			num++;
+		}
+		
+		
+		
+		
+		
+		for(int i=num-1;i>=0;i--)
+			cout<<ans[i];
+			
+		cout<<endl;
+		
+		if(line>0)
+			cout<<endl;
+		
+	
+	}
+
+
+}
