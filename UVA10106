@@ -1,0 +1,63 @@
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+
+string operator*(string &a,string &b)
+{
+	reverse(a.begin(),a.end());
+	reverse(b.begin(),b.end());
+	
+	for(int i=0;i<a.size();i++)a[i]-='0';
+	for(int i=0;i<b.size();i++)b[i]-='0';
+	
+	string c(a.size()+b.size(),0);
+	
+	for(int j=0;j<a.size();j++)
+	{
+		for(int k=0;k<b.size();k++)
+		{
+			c[j+k]+=a[j]*b[k];
+		}
+		
+		
+		for(int i=0;i<c.size();i++)
+		{
+			if((i+1)<c.size())
+			{
+				c[i+1]+=c[i]/10;
+			}
+			c[i]=c[i]%10;
+		}
+	}
+	
+	
+	int n=c.size();
+	
+	while(n&&c[n-1]==0)n--;
+	
+	c.resize(n);
+	
+	for(int i=0;i<c.size();i++)
+		c[i]+='0';
+	
+	if(c.size()==0)c="0";
+	
+	reverse(c.begin(),c.end());
+	
+	
+	
+	return c;
+}
+
+
+int main()
+{
+	string a,b;
+	
+	while(cin>>a>>b)
+	{
+		cout<<a*b<<endl;
+	}
+}
