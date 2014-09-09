@@ -1,0 +1,38 @@
+#include<iostream>
+
+using namespace std;
+
+
+int ans[1001];
+int big[3000]={1};
+
+int main()
+{
+	for(int i=1;i<=1000;i++)
+	{
+		for(int k=0;k<3000;k++)big[k]*=i;
+		
+		for(int k=0;k<3000;k++)
+		{
+			if(k+1<3000)
+				big[k+1]+=big[k]/10;
+			big[k]%=10;
+		}
+	
+		for(int k=0;k<3000;k++)
+		{
+			ans[i]+=big[k];
+		}
+	}
+	
+	
+	int a;
+	
+	while(cin>>a)
+	{
+		cout<<ans[a]<<endl;
+	}
+
+
+
+}
