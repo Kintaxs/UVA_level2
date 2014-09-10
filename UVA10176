@@ -1,0 +1,64 @@
+//131071
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	string str,temp;
+	char c;
+	int n,p=131071;
+	
+	while(cin.get(c))
+	{
+		if(c!='#')
+		{
+			temp+=c;
+			continue;
+		}
+		else
+		{
+			str=temp;
+		}
+	
+		n=0;
+		
+		for(int i=0;i<str.size();i++)
+		{
+			if(str[i]=='0'&&i==0)
+			{
+				n=0;
+			}
+			else if(str[i]=='1'&&i==0)
+			{
+				n=1;
+				n=n%p;
+			}
+			else if(str[i]=='0'&&i>0)
+			{
+				n=n*2;
+				n=n%p;	
+			}
+			else
+			{
+				n=n*2;
+				n=n+1;
+				n=n%p;
+			}
+		}
+		
+		
+		if(n==0)
+			cout<<"YES"<<endl;
+		else
+			cout<<"NO"<<endl;
+		
+		
+		getline(cin,temp);
+		temp.clear();
+		str.clear();
+	}
+
+
+
+}
