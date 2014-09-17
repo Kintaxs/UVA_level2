@@ -1,0 +1,29 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int number,count,p;
+	
+	while(cin>>number)
+	{
+		count=1;
+		p=1;
+		
+		while(true)
+		{
+			if(p%number==0)
+				break;
+			else
+			{
+				p=(p%number)*10+1;
+				count++;
+			}
+		}
+		
+		cout<<count<<endl;
+	}
+
+
+}
