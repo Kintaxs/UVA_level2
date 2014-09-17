@@ -1,0 +1,80 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int gcd(long long int x,long long int y)
+{
+	if(y!=0)
+		return gcd(y,x%y);
+	else
+		return x;
+}
+
+
+int main()
+{
+	long long int a,b,k,an,am,n,m,mi,gnum,ans;
+	string str;
+	while(cin>>str&&str[1]=='.')
+	{
+		
+		str.resize(str.size()-3);
+		
+	
+		
+		a=0;
+		for(int i=str.size()-1;i>1;i--)
+		{
+			a=a+(str[i]-'0')*pow(10,str.size()-i-1);
+		}
+			
+		
+		k=1;
+		mi=a*10;
+		while(k<=str.size()-2)
+		{
+			b=0;
+			for(int i=2;i<str.size()-k;i++)
+			{
+				b=b+(str[i]-'0')*pow(10,str.size()-i-k-1);
+			}
+		
+		
+			m=0;
+			for(int i=1;i<=k;i++)
+			{
+				m=m*10+1;
+			}
+			m=m*9;
+		
+			for(int i=1;i<=str.size()-2-k;i++)
+			{
+				m=m*10;
+			}
+		
+			n=a-b;
+			
+		
+			
+			gnum=gcd(m,n);
+			
+			ans=m/gnum;
+			
+			if(ans<mi)
+			{
+				mi=ans;
+				an=n/gnum;
+				am=m/gnum;
+			}
+			
+			k++;
+		}
+		
+		
+		cout<<an<<"/"<<am<<endl;
+	
+	}
+
+
+
+}
