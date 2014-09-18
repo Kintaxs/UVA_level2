@@ -1,0 +1,73 @@
+#include<iostream>
+
+using namespace std;
+
+int m,n;
+char num[100][100];
+bool flag[100][100];
+
+void findoil(int x,int y)
+{
+	if(x<0||y<0||x>=m||y>=n)
+		return;
+	else if(num[x][y]=='*'||flag[x][y]==true)
+		return;
+	else
+	{
+		flag[x][y]=true;
+		findoil(x-1,y-1);
+		findoil(x-1,y);
+		findoil(x-1,y+1);
+		findoil(x,y-1);
+		findoil(x,y+1);
+		findoil(x+1,y-1);
+		findoil(x+1,y);
+		findoil(x+1,y+1);
+		
+	}
+
+
+}
+
+
+
+int main()
+{
+	int count;
+	while(cin>>m>>n)
+	{
+		if(m==0&&n==0)
+			break;
+		count=0;
+	
+		for(int i=0;i<100;i++)
+			for(int j=0;j<100;j++)
+				flag[i][j]=false;
+		
+
+	
+		for(int i=0;i<m;i++)
+			for(int j=0;j<n;j++)
+				cin>>num[i][j];
+		
+		
+		for(int i=0;i<m;i++)
+			for(int j=0;j<n;j++)
+			{
+				if(flag[i][j]==false&&num[i][j]=='@')
+				{
+					count++;
+					findoil(i,j);
+				}
+			}
+			
+		
+		cout<<count<<endl;
+	
+	
+	}
+
+
+
+
+}
