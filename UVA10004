@@ -1,0 +1,68 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+
+using namespace std;
+
+int main()
+{
+	int m,n,a,b;
+	
+	while(cin>>m,m)
+	{
+		cin>>n;
+		int *sl=new int[m*m];
+		#define sl(x,y) sl[x*m+y]
+		
+		for(int i=0;i<m*m;i++)
+			sl[i]=0;
+		
+		while(n--)
+		{
+			cin>>a>>b;
+			
+			sl(a,b)=sl(b,a)=1;
+		}
+		
+		stack<int> stk;stk.push(0);
+		vector<int> col(m);col[0]=1;
+		bool ans=true;
+		while(stk.size())
+		{
+			int t;
+			t=stk.top();stk.pop();
+			for(int i=0;i<m;i++)
+			{
+				if(sl(t,i)==0)
+					continue;
+				else if(col[i]==0)
+				{
+					col[i]=-1*col[t];
+					stk.push(i);
+				}
+				else
+				{
+					if(col[i]==col[t])
+					{
+						ans=false;
+						break;
+					}
+				}
+			}
+			
+			if(ans==false)
+				break;
+		}
+		
+		delete[] sl;
+		
+		if(ans)
+			cout<<"BICOLORABLE."<<endl;
+		else
+			cout<<"NOT BICOLORABLE."<<endl;
+	
+	}
+
+
+
+}
