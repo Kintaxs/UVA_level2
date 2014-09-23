@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int num,i,pcount,ncount;
+	int x[101],y[101];
+	bool flag;
+	while(cin>>num&&num)
+	{
+		for(i=0;i<2*num;i++)
+		{
+			cin>>x[i]>>y[i];
+		}	
+		
+		flag=false;
+		
+		for(int A=-500;A<=500;A++)
+		{
+			for(int B=-500;B<=500;B++)
+			{
+				pcount=0;
+				ncount=0;
+				for(int j=0;j<i;j++)
+				{
+					if(A*x[j]+B*y[j]>0)
+						pcount++;
+					else if(A*x[j]+B*y[j]<0)
+						ncount++;
+				}
+				
+				if(pcount==ncount)
+				{
+					cout<<A<<" "<<B<<endl;
+					flag=true;
+					break;
+				}
+			}
+			
+			if(flag)
+				break;
+		}
+	}
+
+}
