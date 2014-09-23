@@ -1,0 +1,48 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+
+	int line,num;
+	
+	cin>>line;
+	
+	while(line--)
+	{
+		vector<int> v;
+		vector<int>::iterator it;
+		cin>>num;
+		
+		if(num==0)
+			cout<<"10";
+		else if(num==1)
+			cout<<"1";
+		else
+		{
+			for(int i=9;i>=2;i--)
+			{
+				while(num%i==0)
+				{
+					num/=i;
+					v.push_back(i);	
+				}
+			}
+		}
+		
+		if(num>1)
+			cout<<"-1";
+		else
+		{
+			sort(v.begin(),v.end());
+			for(it=v.begin();it!=v.end();it++)
+				cout<<*it;
+		}
+		
+		cout<<endl;
+	}
+
+
+}
