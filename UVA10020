@@ -1,0 +1,74 @@
+#include<iostream>
+
+using namespace std;
+
+#define mx 100000
+
+struct seg
+{
+	int left,right;
+};
+
+int main()
+{
+	int line;
+	
+	cin>>line;
+	
+	while(line--)
+	{
+		int m,a,b,count=0,count1=0,nl=0,nr,dif=0,now;
+		seg s1[mx],s2[mx];
+		
+		cin>>m;
+		
+		nr=m;
+		now=-1;
+		
+		while(cin>>a>>b&&(a||b))
+		{
+			s1[count].left=a;
+			s1[count++].right=b;	
+		}
+		
+		while(nl!=nr)
+		{
+			dif=m;
+		for(int i=0;i<count;i++)
+		{
+			if(s1[i].left<=nl)
+			{
+				if(nr-s1[i].right<dif)
+				{
+					dif=nr-s1[i].right;
+					now=i;
+				}
+			}
+		}
+					
+		
+			if(s1[now].right<=nl||now==-1)
+			{
+				count1=0;
+				break;
+			}
+			
+			s2[count1].left=s1[now].left;
+			s2[count1++].right=s1[now].right;
+			
+			nl=s1[now].right;
+		
+		}
+	
+		cout<<count1<<endl;
+		for(int i=0;i<count1;i++)
+		{
+			cout<<s2[i].left<<" "<<s2[i].right<<endl;
+		}
+		
+	
+		if(line>0)
+			cout<<endl;
+	}
+	
+}
