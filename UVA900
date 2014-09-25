@@ -1,0 +1,25 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int a;
+	
+	long long num[50];
+	
+	num[0]=1;
+	num[1]=2;
+	
+	for(int i=2;i<50;i++)
+	{
+		num[i]=num[i-1]+num[i-2];
+	}
+	
+	while(cin>>a&&a)
+	{
+		cout<<num[a-1]<<endl;
+	}
+
+
+}
