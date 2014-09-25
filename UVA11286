@@ -1,0 +1,42 @@
+#include<iostream>
+#include<map>
+#include<set>
+
+using namespace std;
+
+int main()
+{
+	int n,num;
+	
+	
+	while(cin>>n&&n)
+	{
+		map<set<int>,int> m;
+		int t=0,w=0;
+		while(n--)
+		{
+			set<int> s;
+			for(int i=0;i<5;i++)
+			{
+				cin>>num;
+				s.insert(num);
+			}
+			
+			m[s]++;	
+			int h=m[s];
+			if(h==t)
+				w++;
+			else if(h>t)
+			{
+				t=h;
+				w=1;
+			}
+		}
+		
+		cout<<t*w<<endl;
+		
+		
+	}
+
+
+}
