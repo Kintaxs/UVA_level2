@@ -1,0 +1,57 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+	bool flag,flag1;
+	char c;
+	char old;
+	char str[4];
+	string s="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	
+
+	
+	
+	while(true)
+	{
+		flag=true;
+		for(int i=0;i<4;i++)
+		{
+			c=getchar();
+
+			if(c=='#')
+			{
+	
+				if(flag1)
+				{
+					flag1=false;
+					i=-1;
+					continue;
+				}
+				else
+				{
+					flag=false;
+					break;
+				}
+				
+			}
+			else if(0>s.find(c)||s.find(c)>64)
+			{
+				i--;
+				continue;
+			}
+			
+			flag1=true;
+			str[i]=c;
+	
+		}
+		if(!flag)
+			break;
+	
+		for(int i=0;i<4;i++)
+			cout<<str[i];
+		cout<<endl;
+	}
+
+}
